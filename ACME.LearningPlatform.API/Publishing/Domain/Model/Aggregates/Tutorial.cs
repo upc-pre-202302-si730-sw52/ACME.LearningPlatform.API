@@ -7,7 +7,7 @@ public partial class Tutorial
     public string Title { get; set; }
     public string Summary { get; private set; }
     
-    public Tutorial(string title, string summary)
+    public Tutorial(string title, string summary):this()
     {
         Title = title;
         Summary = summary;

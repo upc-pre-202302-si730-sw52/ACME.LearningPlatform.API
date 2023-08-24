@@ -13,7 +13,6 @@
 
     <ItemGroup>
       <Folder Include="Publishing\Application\Internal\" />
-      <Folder Include="Publishing\Domain\Model\ValueObjects\" />
       <Folder Include="Publishing\Domain\Repositories\" />
       <Folder Include="Publishing\Domain\Services\" />
       <Folder Include="Publishing\Infrastructure\Repositories\" />
