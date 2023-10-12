@@ -20,6 +20,7 @@
       <Folder Include="Publishing\Domain\Services\" />
       <Folder Include="Publishing\Infrastructure\Repositories\" />
       <Folder Include="Publishing\Interfaces\" />
+      <Folder Include="Shared\Infrastructure\Repositories\" />
     </ItemGroup>
 
 </Project>
