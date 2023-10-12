@@ -16,9 +16,7 @@
 
     <ItemGroup>
       <Folder Include="Publishing\Application\Internal\" />
-      <Folder Include="Publishing\Domain\Repositories\" />
       <Folder Include="Publishing\Domain\Services\" />
-      <Folder Include="Publishing\Infrastructure\Repositories\" />
       <Folder Include="Publishing\Interfaces\" />
     </ItemGroup>
 
