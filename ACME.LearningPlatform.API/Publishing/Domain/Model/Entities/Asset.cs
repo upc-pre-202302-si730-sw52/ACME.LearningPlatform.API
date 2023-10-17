@@ -11,7 +11,7 @@ public abstract class Asset
         AssetIdentifier = new AcmeAssetIdentifier();
     }
 
-    protected AcmeAssetIdentifier AssetIdentifier { get; private set; }
+    public AcmeAssetIdentifier AssetIdentifier { get; private set; }
     
     public EAssetStatus Status {get; protected set;}
     
