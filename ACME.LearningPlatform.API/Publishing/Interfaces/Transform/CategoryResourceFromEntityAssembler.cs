@@ -3,7 +3,7 @@ using ACME.LearningPlatform.API.Publishing.Interfaces.REST.Resources;
 
 namespace ACME.LearningPlatform.API.Publishing.Interfaces.Transform;
 
-public class CategoryResourceFromEntityAssembler
+public static class CategoryResourceFromEntityAssembler
 {
     public static CategoryResource ToResourceFromEntity(Category entity)
     {

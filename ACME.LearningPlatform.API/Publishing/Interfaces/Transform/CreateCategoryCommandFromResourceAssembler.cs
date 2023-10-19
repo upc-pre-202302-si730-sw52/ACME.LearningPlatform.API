@@ -3,7 +3,7 @@ using ACME.LearningPlatform.API.Publishing.Interfaces.REST.Resources;
 
 namespace ACME.LearningPlatform.API.Publishing.Interfaces.Transform;
 
-public class CreateCategoryCommandFromResourceAssembler
+public static class CreateCategoryCommandFromResourceAssembler
 {
     public static CreateCategoryCommand ToCommandFromResource(CreateCategoryResource resource)
     {
