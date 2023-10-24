@@ -1,3 +1,4 @@
+using ACME.LearningPlatform.API.Profiles.Domain.Model.ValueObjects;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Aggregates;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
 using ACME.LearningPlatform.API.Shared.Infrastructure.Configuration.Extensions;
@@ -50,6 +51,36 @@ public class AppDbContext : DbContext
         builder.Entity<VideoAsset>().Property(p => p.VideoUri).IsRequired();
 
         builder.Entity<Tutorial>().HasMany(t => t.Assets);
+        
+        // Profiles Context
+
+        builder.Entity<Profile>().ToTable("Profiles");
+        builder.Entity<Profile>().HasKey(p => p.Id);
+        builder.Entity<Profile>().Property(p => p.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<Profile>().OwnsOne(p => p.Name,
+            n =>
+            {
+                n.WithOwner().HasForeignKey("Id");
+                n.Property(p => p.FirstName).HasColumnName("FirstName");
+                n.Property(p => p.LastName).HasColumnName("LastName");
+            });
+        
+        builder.Entity<Profile>().OwnsOne(p => p.Email,
+            e =>
+            {
+                e.WithOwner().HasForeignKey("Id");
+                e.Property(p => p.Address).HasColumnName("Email");
+            });
+
+        builder.Entity<Profile>().OwnsOne(p => p.Address,
+            a =>
+            {
+                a.WithOwner().HasForeignKey("Id");
+                a.Property(p => p.Street).HasColumnName("AddressStreet");
+                a.Property(p => p.City).HasColumnName("AddressCity");
+                a.Property(p => p.State).HasColumnName("AddressState");
+                a.Property(p => p.ZipCode).HasColumnName("AddressZipCode");
+            });
         
         // Apply snake case naming convention
         builder.UseSnakeCaseNamingConvention();
