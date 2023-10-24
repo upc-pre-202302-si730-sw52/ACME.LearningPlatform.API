@@ -9,7 +9,7 @@ public partial class Tutorial: Asset
     {
         Title = string.Empty;
         Summary = string.Empty;
-        Status = EAssetStatus.Draft;
+        Status = EPublishingStatus.Draft;
         Assets = new List<Asset>();
     }
     

@@ -7,13 +7,13 @@ public abstract class Asset
     protected Asset(EAssetType type)
     {
         Type = type;
-        Status = EAssetStatus.ReadyToEdit;
+        Status = EPublishingStatus.ReadyToEdit;
         AssetIdentifier = new AcmeAssetIdentifier();
     }
 
     public AcmeAssetIdentifier AssetIdentifier { get; private set; }
     
-    public EAssetStatus Status {get; protected set;}
+    public EPublishingStatus Status {get; protected set;}
     
     public EAssetType Type {get; private set;}
 
@@ -25,26 +25,26 @@ public abstract class Asset
 
     public void SendToEdit()
     {
-        Status = EAssetStatus.ReadyToEdit;
+        Status = EPublishingStatus.ReadyToEdit;
     }
     
     public void SendForApproval()
     {
-        Status = EAssetStatus.ReadyToApproval;
+        Status = EPublishingStatus.ReadyToApproval;
     }
 
     public void Reject()
     {
-        Status = EAssetStatus.ReadyToEdit;
+        Status = EPublishingStatus.ReadyToEdit;
     }
 
     public void ApproveAndLock()
     {
-        Status = EAssetStatus.ApprovedAndLocked;
+        Status = EPublishingStatus.ApprovedAndLocked;
     }
     
     public void ReturnToEdit()
     {
-        Status = EAssetStatus.ReadyToEdit;
+        Status = EPublishingStatus.ReadyToEdit;
     }
 }
