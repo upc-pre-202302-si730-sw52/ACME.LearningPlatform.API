@@ -2,7 +2,7 @@ using ACME.LearningPlatform.API.Publishing.Domain.Model.ValueObjects;
 
 namespace ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
 
-public abstract class Asset : IPublishable
+public partial class Asset : IPublishable
 {
     protected Asset(EAssetType type)
     {

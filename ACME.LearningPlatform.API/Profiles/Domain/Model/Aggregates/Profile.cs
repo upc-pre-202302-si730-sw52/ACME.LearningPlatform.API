@@ -1,6 +1,8 @@
-namespace ACME.LearningPlatform.API.Profiles.Domain.Model.ValueObjects;
+using ACME.LearningPlatform.API.Profiles.Domain.Model.ValueObjects;
 
-public class Profile
+namespace ACME.LearningPlatform.API.Profiles.Domain.Model.Aggregates;
+
+public partial class Profile
 {
     public int Id { get; }
     public PersonName Name { get; private set; }

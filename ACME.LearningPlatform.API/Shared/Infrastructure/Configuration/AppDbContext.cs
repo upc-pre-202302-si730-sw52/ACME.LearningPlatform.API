@@ -1,7 +1,9 @@
+using ACME.LearningPlatform.API.Profiles.Domain.Model.Aggregates;
 using ACME.LearningPlatform.API.Profiles.Domain.Model.ValueObjects;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Aggregates;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
 using ACME.LearningPlatform.API.Shared.Infrastructure.Configuration.Extensions;
+using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace ACME.LearningPlatform.API.Shared.Infrastructure.Configuration;
@@ -12,6 +14,14 @@ public class AppDbContext : DbContext
     {
     }
 
+
+    protected override void OnConfiguring(DbContextOptionsBuilder builder)
+    {
+        // Enable Created/Updated Interceptors
+        builder.AddCreatedUpdatedInterceptor();
+        
+        base.OnConfiguring(builder);
+    }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
