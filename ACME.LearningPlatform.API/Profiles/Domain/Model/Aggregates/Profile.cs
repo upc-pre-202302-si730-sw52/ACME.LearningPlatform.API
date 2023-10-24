@@ -15,4 +15,11 @@ public partial class Profile
         Email = new EmailAddress(email);
         Address = new StreetAddress(street, city, state, zipCode);
     }
+
+    public Profile()
+    {
+        Name = new PersonName();
+        Email = new EmailAddress();
+        Address = new StreetAddress();
+    }
 }
