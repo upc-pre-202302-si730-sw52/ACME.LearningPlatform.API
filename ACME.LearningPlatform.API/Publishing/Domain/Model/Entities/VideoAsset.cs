@@ -4,7 +4,7 @@ namespace ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
 
 public class VideoAsset: Asset
 {
-    private Uri VideoUri { get; }
+    public Uri VideoUri { get; }
     
     public VideoAsset(string videoUrl) : base(EAssetType.Video)
     {

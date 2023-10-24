@@ -11,17 +11,21 @@ public abstract class Asset : IPublishable
         AssetIdentifier = new AcmeAssetIdentifier();
     }
 
+    public int Id { get; private set; }
     public AcmeAssetIdentifier AssetIdentifier { get; private set; }
     
     public EPublishingStatus Status {get; protected set;}
     
     public EAssetType Type {get; private set;}
 
-    public abstract object GetContent();
-    
-    public abstract bool Readable { get; }
-    
-    public abstract bool Viewable { get; }
+    public virtual object GetContent()
+    {
+        return string.Empty;
+    }
+
+    public virtual bool Readable => false;
+
+    public virtual bool Viewable => false;
 
     public void SendToEdit()
     {

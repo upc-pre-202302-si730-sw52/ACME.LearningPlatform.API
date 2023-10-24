@@ -4,16 +4,16 @@ namespace ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
 
 public class ImageAsset: Asset
 {
-    private Uri ImageUrl { get; }
+    public Uri ImageUri { get; }
     
     public ImageAsset(string imageUrl) : base(EAssetType.Image)
     {
-        ImageUrl = new Uri(imageUrl);
+        ImageUri = new Uri(imageUrl);
     }
 
     public override string GetContent()
     {
-        return ImageUrl.AbsoluteUri;
+        return ImageUri.AbsoluteUri;
     }
 
     public override bool Readable => false;

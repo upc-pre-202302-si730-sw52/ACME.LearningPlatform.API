@@ -13,7 +13,7 @@ public partial class Tutorial: IPublishable
         Assets = new List<Asset>();
     }
     
-    private ICollection<Asset> Assets { get; }
+    public ICollection<Asset> Assets { get; }
     
     public EPublishingStatus Status { get; private set; }
     
