@@ -19,7 +19,7 @@ public class TutorialCommandService: ITutorialCommandService
 
     public async Task<Tutorial> Handle(AddVideoAssetToTutorialCommand command)
     {
-        var tutorial = await _tutorialRepository.FindByTutorialIdentifierAsync(command.TutorialIdentifier);
+        var tutorial = await _tutorialRepository.FindByIdAsync(command.TutorialId);
         if (tutorial is null)
         {
             throw new Exception("Tutorial not found");

@@ -3,9 +3,9 @@ using ACME.LearningPlatform.API.Publishing.Domain.Model.ValueObjects;
 
 namespace ACME.LearningPlatform.API.Publishing.Domain.Model.Aggregates;
 
-public partial class Tutorial: Asset
+public partial class Tutorial: IPublishable
 {
-    public Tutorial():base(EAssetType.Tutorial)
+    public Tutorial()
     {
         Title = string.Empty;
         Summary = string.Empty;
@@ -13,11 +13,11 @@ public partial class Tutorial: Asset
         Assets = new List<Asset>();
     }
     
-    public AcmeAssetIdentifier TutorialIdentifier => AssetIdentifier;
-    
     private ICollection<Asset> Assets { get; }
     
-    public override List<ContentItem> GetContent()
+    public EPublishingStatus Status { get; private set; }
+    
+    public List<ContentItem> GetContent()
     {
         var content = new List<ContentItem>();
         if (Assets.Any()) content.AddRange(
@@ -37,8 +37,8 @@ public partial class Tutorial: Asset
         get { return Assets.Any(asset => asset.Viewable); }
     }
         
-    public override bool Readable => HasReadableAssets;
-    public override bool Viewable => HasViewableAssets;
+    public bool Readable => HasReadableAssets;
+    public bool Viewable => HasViewableAssets;
 
     public void AddImage(string imageUrl)
     {
@@ -80,9 +80,41 @@ public partial class Tutorial: Asset
         if (asset != null) Assets.Remove(asset);
     }
 
+    private bool HasAllAssetsWithStatus(EPublishingStatus status)
+    {
+        return Assets.All(asset => asset.Status == status);
+    }
+    
     public void ClearAssets()
     {
         Assets.Clear();
     }
-    
+
+    public void SendToEdit()
+    {
+        if (HasAllAssetsWithStatus(EPublishingStatus.ReadyToEdit))
+            Status = EPublishingStatus.ReadyToEdit;
+    }
+
+    public void SendToApproval()
+    {
+        if (HasAllAssetsWithStatus(EPublishingStatus.ReadyToApproval))
+            Status = EPublishingStatus.ReadyToApproval;
+    }
+
+    public void ApproveAndLock()
+    {
+        if (HasAllAssetsWithStatus(EPublishingStatus.ApprovedAndLocked))
+            Status = EPublishingStatus.ApprovedAndLocked;
+    }
+
+    public void Reject()
+    {
+        Status = EPublishingStatus.Draft;
+    }
+
+    public void ReturnToEdit()
+    {
+        Status = EPublishingStatus.ReadyToEdit;
+    }
 }

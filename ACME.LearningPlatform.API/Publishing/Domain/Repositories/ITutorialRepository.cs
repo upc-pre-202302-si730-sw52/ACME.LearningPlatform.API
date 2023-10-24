@@ -6,5 +6,4 @@ namespace ACME.LearningPlatform.API.Publishing.Domain.Repositories;
 
 public interface ITutorialRepository: IBaseRepository<Tutorial>
 {
-    Task<Tutorial?> FindByTutorialIdentifierAsync(AcmeAssetIdentifier tutorialIdentifier);
 }

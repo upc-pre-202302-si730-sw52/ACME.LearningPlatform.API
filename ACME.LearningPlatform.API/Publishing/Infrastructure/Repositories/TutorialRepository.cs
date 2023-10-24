@@ -12,10 +12,4 @@ public class TutorialRepository: BaseRepository<Tutorial>, ITutorialRepository
     public TutorialRepository(AppDbContext context) : base(context)
     {
     }
-
-    public async Task<Tutorial?> FindByTutorialIdentifierAsync(AcmeAssetIdentifier tutorialIdentifier)
-    {
-        return await Context.Set<Tutorial>()
-            .FirstOrDefaultAsync(t => t.TutorialIdentifier == tutorialIdentifier);
-    }
 }

@@ -16,6 +16,6 @@ public class TutorialQueryService: ITutorialQueryService
 
     public async Task<Tutorial?> Handle(GetTutorialByIdentifierQuery query)
     {
-        return await _tutorialRepository.FindByTutorialIdentifierAsync(query.tutorialIdentifier);
+        return await _tutorialRepository.FindByIdAsync(query.tutorialId);
     }
 }

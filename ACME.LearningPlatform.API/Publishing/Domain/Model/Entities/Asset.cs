@@ -2,7 +2,7 @@ using ACME.LearningPlatform.API.Publishing.Domain.Model.ValueObjects;
 
 namespace ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
 
-public abstract class Asset
+public abstract class Asset : IPublishable
 {
     protected Asset(EAssetType type)
     {
@@ -28,7 +28,7 @@ public abstract class Asset
         Status = EPublishingStatus.ReadyToEdit;
     }
     
-    public void SendForApproval()
+    public void SendToApproval()
     {
         Status = EPublishingStatus.ReadyToApproval;
     }
