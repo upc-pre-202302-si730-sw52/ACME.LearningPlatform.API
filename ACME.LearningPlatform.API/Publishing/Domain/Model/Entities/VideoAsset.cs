@@ -6,6 +6,10 @@ public class VideoAsset: Asset
 {
     public Uri VideoUri { get; }
     
+    public VideoAsset() : base(EAssetType.Video)
+    {
+        
+    }
     public VideoAsset(string videoUrl) : base(EAssetType.Video)
     {
         VideoUri = new Uri(videoUrl);        
