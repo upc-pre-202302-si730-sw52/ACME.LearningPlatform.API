@@ -2,10 +2,10 @@ using ACME.LearningPlatform.API.Publishing.Application.Internal.CommandServices;
 using ACME.LearningPlatform.API.Publishing.Application.Internal.QueryServices;
 using ACME.LearningPlatform.API.Publishing.Domain.Repositories;
 using ACME.LearningPlatform.API.Publishing.Domain.Services;
-using ACME.LearningPlatform.API.Publishing.Infrastructure.Repositories;
+using ACME.LearningPlatform.API.Publishing.Infrastructure.Persistence.Repositories;
 using ACME.LearningPlatform.API.Shared.Domain.Repositories;
-using ACME.LearningPlatform.API.Shared.Infrastructure.Configuration;
-using ACME.LearningPlatform.API.Shared.Infrastructure.Repositories;
+using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration;
+using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

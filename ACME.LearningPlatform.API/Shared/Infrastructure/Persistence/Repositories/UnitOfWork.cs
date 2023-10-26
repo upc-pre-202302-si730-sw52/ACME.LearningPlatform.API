@@ -1,7 +1,7 @@
 using ACME.LearningPlatform.API.Shared.Domain.Repositories;
-using ACME.LearningPlatform.API.Shared.Infrastructure.Configuration;
+using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration;
 
-namespace ACME.LearningPlatform.API.Shared.Infrastructure.Repositories;
+namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Repositories;
 
 public class UnitOfWork : IUnitOfWork
 {

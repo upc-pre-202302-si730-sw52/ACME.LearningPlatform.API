@@ -1,7 +1,7 @@
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Queries;
 using ACME.LearningPlatform.API.Publishing.Domain.Services;
 using ACME.LearningPlatform.API.Publishing.Interfaces.REST.Resources;
-using ACME.LearningPlatform.API.Publishing.Interfaces.Transform;
+using ACME.LearningPlatform.API.Publishing.Interfaces.REST.Transform;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ACME.LearningPlatform.API.Publishing.Interfaces.REST;

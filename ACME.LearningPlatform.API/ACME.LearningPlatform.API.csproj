@@ -19,7 +19,6 @@
       <Folder Include="Profiles\Application\" />
       <Folder Include="Profiles\Infrastructure\" />
       <Folder Include="Profiles\Interfaces\" />
-      <Folder Include="Publishing\Interfaces\REST\Transform\" />
     </ItemGroup>
 
 </Project>

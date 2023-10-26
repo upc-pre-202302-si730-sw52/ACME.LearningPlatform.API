@@ -1,12 +1,11 @@
 using ACME.LearningPlatform.API.Profiles.Domain.Model.Aggregates;
-using ACME.LearningPlatform.API.Profiles.Domain.Model.ValueObjects;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Aggregates;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
-using ACME.LearningPlatform.API.Shared.Infrastructure.Configuration.Extensions;
+using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration.Extensions;
 using EntityFrameworkCore.CreatedUpdatedDate.Extensions;
 using Microsoft.EntityFrameworkCore;
 
-namespace ACME.LearningPlatform.API.Shared.Infrastructure.Configuration;
+namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration;
 
 public class AppDbContext : DbContext
 {

@@ -1,4 +1,4 @@
-namespace ACME.LearningPlatform.API.Shared.Infrastructure.Configuration.Extensions;
+namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration.Extensions;
 
 public static class StringExtensions
 {

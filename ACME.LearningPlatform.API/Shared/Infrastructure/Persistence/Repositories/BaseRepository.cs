@@ -1,8 +1,8 @@
 using ACME.LearningPlatform.API.Shared.Domain.Repositories;
-using ACME.LearningPlatform.API.Shared.Infrastructure.Configuration;
+using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace ACME.LearningPlatform.API.Shared.Infrastructure.Repositories;
+namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Repositories;
 
 public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
 {
