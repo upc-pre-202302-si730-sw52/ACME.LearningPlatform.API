@@ -42,6 +42,13 @@ public class AppDbContext : DbContext
         builder.Entity<Tutorial>().Property(t => t.Title).IsRequired().HasMaxLength(50);
         builder.Entity<Tutorial>().Property(t => t.Summary).IsRequired().HasMaxLength(240);
 
+        // Category Relationships
+        builder.Entity<Category>()
+            .HasMany(c => c.Tutorials)
+            .WithOne(t => t.Category)
+            .HasForeignKey(t => t.CategoryId);
+        
+        // Asset Entity Configuration
         builder.Entity<Asset>().ToTable("Assets")
             .HasDiscriminator(a => a.Type);
         builder.Entity<Asset>().HasKey(p => p.Id);

@@ -19,6 +19,15 @@ public class TutorialsController : ControllerBase
         _tutorialQueryService = tutorialQueryService;
     }
 
+    [HttpPost]
+    public async Task<IActionResult> CreateTutorial([FromBody] CreateTutorialResource createTutorialResource)
+    {
+        var createTutorialCommand =
+            CreateTutorialCommandFromResourceAssembler.ToCommandFromResource(createTutorialResource);
+        var tutorial = await _tutorialCommandService.Handle(createTutorialCommand);
+        var resource = TutorialResourceFromEntityAssembler.ToResourceFromEntity(tutorial);
+        return CreatedAtAction(nameof(GetTutorialByIdentifier), new { tutorialIdentifier = resource.Id }, resource);
+    }
     [HttpGet("{tutorialIdentifier}")]
     public async Task<IActionResult> GetTutorialByIdentifier([FromRoute] int tutorialIdentifier)
     {

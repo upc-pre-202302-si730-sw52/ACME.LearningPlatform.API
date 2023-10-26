@@ -28,4 +28,12 @@ public class TutorialCommandService: ITutorialCommandService
         await _unitOfWork.CompleteAsync();
         return tutorial;
     }
+    
+    public async Task<Tutorial> Handle(CreateTutorialCommand command)
+    {
+        var tutorial = new Tutorial(command.Title, command.Summary, command.CategoryId);
+        await _tutorialRepository.AddAsync(tutorial);
+        await _unitOfWork.CompleteAsync();
+        return tutorial;
+    }
 }
