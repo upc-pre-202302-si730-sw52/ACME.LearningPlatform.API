@@ -7,6 +7,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration;
 
+/**
+ * <summary>
+ *     Application Database Context
+ *
+ *     This class is responsible for configuring the database context for the application. 
+ * </summary>
+ */
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions options) : base(options)
