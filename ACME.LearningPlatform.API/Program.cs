@@ -7,6 +7,7 @@ using ACME.LearningPlatform.API.Shared.Domain.Repositories;
 using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configuration;
 using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +16,29 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(
+    c =>
+    {
+        c.SwaggerDoc("v1",
+            new OpenApiInfo
+            {
+                Title = "ACME.LearningPlatform.API",
+                Version = "v1",
+                Description = "ACME Learning Platform API",
+                TermsOfService = new Uri("https://acme-learning.com/tos"),
+                Contact = new OpenApiContact
+                {
+                    Name = "ACME Studios",
+                    Email = "contact@acme.com"
+                },
+                License = new OpenApiLicense
+                {
+                    Name = "Apache 2.0",
+                    Url = new Uri("https://www.apache.org/licenses/LICENSE-2.0.html")
+                }
+            });
+        c.EnableAnnotations();
+    });
 
 // Add Database Connection
 
