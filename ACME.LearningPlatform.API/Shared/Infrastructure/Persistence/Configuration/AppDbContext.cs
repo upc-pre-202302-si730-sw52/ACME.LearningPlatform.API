@@ -93,9 +93,11 @@ public class AppDbContext : DbContext
             {
                 a.WithOwner().HasForeignKey("Id");
                 a.Property(p => p.Street).HasColumnName("AddressStreet");
+                a.Property(p => p.Number).HasColumnName("AddressNumber");
                 a.Property(p => p.City).HasColumnName("AddressCity");
                 a.Property(p => p.State).HasColumnName("AddressState");
                 a.Property(p => p.ZipCode).HasColumnName("AddressZipCode");
+                a.Property(p => p.Country).HasColumnName("AddressCountry");
             });
         
         // Apply snake case naming convention

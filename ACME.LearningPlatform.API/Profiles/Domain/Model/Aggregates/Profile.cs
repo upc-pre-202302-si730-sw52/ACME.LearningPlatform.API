@@ -9,11 +9,11 @@ public partial class Profile
     public EmailAddress Email { get; private set; }
     public StreetAddress Address { get; private set; }
     
-    public Profile(string firstName, string lastName, string email, string street, string city, string state, string zipCode)
+    public Profile(string firstName, string lastName, string email, string street, string number, string city, string state, string zipCode, string country)
     {
         Name = new PersonName(firstName, lastName);
         Email = new EmailAddress(email);
-        Address = new StreetAddress(street, city, state, zipCode);
+        Address = new StreetAddress(street, number, city, state, zipCode, country);
     }
 
     public Profile()
