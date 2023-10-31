@@ -25,4 +25,12 @@ public class TutorialRepository : BaseRepository<Tutorial>, ITutorialRepository
             .Include(tutorial => tutorial.Category)
             .ToListAsync();
     }
+
+    public async Task<IEnumerable<Tutorial>> FindByCategoryIdAsync(int categoryId)
+    {
+        return await Context.Set<Tutorial>()
+            .Include(tutorial => tutorial.Category)
+            .Where(tutorial => tutorial.CategoryId == categoryId)
+            .ToListAsync();
+    }
 }
