@@ -73,4 +73,25 @@ public class CategoriesController: ControllerBase
         return Ok(resource);
     }
     
+    /**
+     * Get All Categories.
+     * <summary>
+     *  This method is responsible for handling the request to get all categories.
+     * </summary>
+     * <returns>The categories resources.</returns>
+     */
+    [HttpGet]
+    [SwaggerOperation(
+        Summary = "Gets all categories", 
+        Description = "Gets all categories",
+        OperationId = "GetAllCategories")]
+    [SwaggerResponse(200, "The categories were found", typeof(IEnumerable<CategoryResource>))]
+    public async Task<IActionResult> GetAllCategories()
+    {
+        var getAllCategoriesQuery = new GetAllCategoriesQuery();
+        var categories = await _categoryQueryService.Handle(getAllCategoriesQuery);
+        var resources = categories.Select(CategoryResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(resources);
+    }
+    
 }

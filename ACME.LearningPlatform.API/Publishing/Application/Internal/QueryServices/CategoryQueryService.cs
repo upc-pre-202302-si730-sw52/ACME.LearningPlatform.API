@@ -15,8 +15,13 @@ public class CategoryQueryService: ICategoryQueryService
     }
 
 
-    public async Task<Category> Handle(GetCategoryByIdQuery query)
+    public async Task<Category?> Handle(GetCategoryByIdQuery query)
     {
         return await _categoryRepository.FindByIdAsync(query.Id);
+    }
+
+    public async Task<IEnumerable<Category>> Handle(GetAllCategoriesQuery query)
+    {
+        return await _categoryRepository.ListAsync();
     }
 }
