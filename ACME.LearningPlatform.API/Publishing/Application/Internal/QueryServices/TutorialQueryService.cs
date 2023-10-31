@@ -18,4 +18,9 @@ public class TutorialQueryService: ITutorialQueryService
     {
         return await _tutorialRepository.FindByIdAsync(query.tutorialId);
     }
+
+    public async Task<IEnumerable<Tutorial>> Handle(GetAllTutorialsQuery query)
+    {
+        return await _tutorialRepository.ListAsync();
+    }
 }

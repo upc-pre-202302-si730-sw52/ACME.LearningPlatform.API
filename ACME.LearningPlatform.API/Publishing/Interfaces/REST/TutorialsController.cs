@@ -28,6 +28,16 @@ public class TutorialsController : ControllerBase
         var resource = TutorialResourceFromEntityAssembler.ToResourceFromEntity(tutorial);
         return CreatedAtAction(nameof(GetTutorialByIdentifier), new { tutorialIdentifier = resource.Id }, resource);
     }
+    
+    [HttpGet]
+    public async Task<IActionResult> GetAllTutorials()
+    {
+        var getAllTutorialsQuery = new GetAllTutorialsQuery();
+        var tutorials = await _tutorialQueryService.Handle(getAllTutorialsQuery);
+        var resources = tutorials.Select(TutorialResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(resources);
+    }
+    
     [HttpGet("{tutorialIdentifier}")]
     public async Task<IActionResult> GetTutorialByIdentifier([FromRoute] int tutorialIdentifier)
     {

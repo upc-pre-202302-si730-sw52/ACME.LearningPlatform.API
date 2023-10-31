@@ -6,4 +6,5 @@ namespace ACME.LearningPlatform.API.Publishing.Domain.Services;
 public interface ITutorialQueryService
 {
     Task<Tutorial?> Handle(GetTutorialByIdentifierQuery query);
+    Task<IEnumerable<Tutorial>> Handle(GetAllTutorialsQuery query);
 }

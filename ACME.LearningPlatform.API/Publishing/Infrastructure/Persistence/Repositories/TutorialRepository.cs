@@ -18,4 +18,11 @@ public class TutorialRepository : BaseRepository<Tutorial>, ITutorialRepository
             .Include(tutorial => tutorial.Category)
             .FirstOrDefaultAsync(tutorial => tutorial.Id == id);
     }
+    
+    public new async Task<IEnumerable<Tutorial>> ListAsync()
+    {
+        return await Context.Set<Tutorial>()
+            .Include(tutorial => tutorial.Category)
+            .ToListAsync();
+    }
 }
