@@ -2,6 +2,8 @@ using ACME.LearningPlatform.API.IAM.Application.Internal.OutboundServices;
 using ACME.LearningPlatform.API.IAM.Domain.Repositories;
 using ACME.LearningPlatform.API.IAM.Infrastructure.Hashing.Services;
 using ACME.LearningPlatform.API.IAM.Infrastructure.Persistence.Repositories;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.Configuration;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.Services;
 using ACME.LearningPlatform.API.Publishing.Application.Internal.CommandServices;
 using ACME.LearningPlatform.API.Publishing.Application.Internal.QueryServices;
 using ACME.LearningPlatform.API.Publishing.Domain.Repositories;
@@ -83,7 +85,10 @@ builder.Services.AddScoped<ITutorialQueryService, TutorialQueryService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IHashingService, HashingService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
 
+// EncodingSettings Configuration
+builder.Services.Configure<EncodingSettings>(builder.Configuration.GetSection("EncodingSettings"));
 
 var app = builder.Build();
 
