@@ -7,17 +7,21 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
         <PackageReference Include="EntityFrameworkCore.CreatedUpdatedDate" Version="7.0.10" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.13" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.12" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="7.0.12" />
         <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.5" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0"/>
         <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+        <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="IAM\Application\" />
+      <Folder Include="IAM\Application\Internal\CommandServices\" />
+      <Folder Include="IAM\Application\Internal\QueryServices\" />
       <Folder Include="IAM\Domain\Model\Commands\" />
       <Folder Include="IAM\Domain\Model\Queries\" />
       <Folder Include="IAM\Domain\Services\" />
