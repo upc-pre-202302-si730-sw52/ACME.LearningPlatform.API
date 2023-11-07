@@ -1,3 +1,5 @@
+using ACME.LearningPlatform.API.IAM.Domain.Repositories;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Persistence.Repositories;
 using ACME.LearningPlatform.API.Publishing.Application.Internal.CommandServices;
 using ACME.LearningPlatform.API.Publishing.Application.Internal.QueryServices;
 using ACME.LearningPlatform.API.Publishing.Domain.Repositories;
@@ -75,6 +77,8 @@ builder.Services.AddScoped<ITutorialRepository, TutorialRepository>();
 builder.Services.AddScoped<ITutorialCommandService, TutorialCommandService>();
 builder.Services.AddScoped<ITutorialQueryService, TutorialQueryService>();
 
+// IAM Bounded Context Injection Configuration
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 
 var app = builder.Build();
 
