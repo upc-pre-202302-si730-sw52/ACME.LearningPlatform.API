@@ -17,6 +17,9 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="IAM\Application\" />
+      <Folder Include="IAM\Infrastructure\" />
+      <Folder Include="IAM\Interfaces\" />
       <Folder Include="Profiles\Application\" />
       <Folder Include="Profiles\Infrastructure\" />
       <Folder Include="Profiles\Interfaces\" />
