@@ -20,11 +20,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="IAM\Application\Internal\CommandServices\" />
-      <Folder Include="IAM\Application\Internal\QueryServices\" />
       <Folder Include="IAM\Domain\Model\Commands\" />
       <Folder Include="IAM\Domain\Model\Queries\" />
-      <Folder Include="IAM\Domain\Services\" />
       <Folder Include="IAM\Interfaces\" />
       <Folder Include="Profiles\Application\" />
       <Folder Include="Profiles\Infrastructure\" />
