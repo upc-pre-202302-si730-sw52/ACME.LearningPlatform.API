@@ -16,11 +16,11 @@ namespace ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.Services;
  */
 public class TokenService : ITokenService
 {
-    private readonly EncodingSettings _encodingSettings;
+    private readonly TokenSettings _tokenSettings;
 
-    public TokenService(IOptions<EncodingSettings> encodingSettings)
+    public TokenService(IOptions<TokenSettings> encodingSettings)
     {
-        _encodingSettings = encodingSettings.Value;
+        _tokenSettings = encodingSettings.Value;
     }
 
     /**
@@ -32,7 +32,7 @@ public class TokenService : ITokenService
      */
     public string GenerateToken(User user)
     {
-        var secret = _encodingSettings.Secret;
+        var secret = _tokenSettings.Secret;
         var key = Encoding.ASCII.GetBytes(secret);
         var tokenDescriptor = new SecurityTokenDescriptor
         {
@@ -65,7 +65,7 @@ public class TokenService : ITokenService
             return null;
         
         var tokenHandler = new JwtSecurityTokenHandler();
-        var key = Encoding.ASCII.GetBytes(_encodingSettings.Secret);
+        var key = Encoding.ASCII.GetBytes(_tokenSettings.Secret);
 
         try
         {

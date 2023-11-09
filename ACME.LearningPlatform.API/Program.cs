@@ -92,8 +92,8 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IUserCommandService, UserCommandService>();
 builder.Services.AddScoped<IUserQueryService, UserQueryService>();
 
-// EncodingSettings Configuration
-builder.Services.Configure<EncodingSettings>(builder.Configuration.GetSection("EncodingSettings"));
+// TokenSettings Configuration
+builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
 
 var app = builder.Build();
 
