@@ -1,3 +1,4 @@
+using ACME.LearningPlatform.API.IAM.Domain.Model.Aggregates;
 using ACME.LearningPlatform.API.Profiles.Domain.Model.Aggregates;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Aggregates;
 using ACME.LearningPlatform.API.Publishing.Domain.Model.Entities;
@@ -106,6 +107,15 @@ public class AppDbContext : DbContext
                 a.Property(p => p.ZipCode).HasColumnName("AddressZipCode");
                 a.Property(p => p.Country).HasColumnName("AddressCountry");
             });
+        
+        // IAM Context
+        
+        builder.Entity<User>().ToTable("Users");
+        builder.Entity<User>().HasKey(u => u.Id);
+        builder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
+        builder.Entity<User>().Property(u => u.Username).IsRequired().HasMaxLength(30);
+        builder.Entity<User>().Property(u => u.PasswordHash).IsRequired().HasMaxLength(30);
+        
         
         // Apply snake case naming convention
         builder.UseSnakeCaseNamingConvention();
