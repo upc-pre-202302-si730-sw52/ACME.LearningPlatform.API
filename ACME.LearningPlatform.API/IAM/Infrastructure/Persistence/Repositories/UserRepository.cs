@@ -16,4 +16,9 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     {
         return await Context.Set<User>().FirstOrDefaultAsync(user => user.Username.Equals(username));
     }
+
+    public bool ExistsByUsername(string username)
+    {
+        return Context.Set<User>().Any(user => user.Username.Equals(username));
+    }
 }
