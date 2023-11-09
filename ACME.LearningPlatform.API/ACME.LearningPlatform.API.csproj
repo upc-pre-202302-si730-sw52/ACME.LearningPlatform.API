@@ -21,7 +21,6 @@
 
     <ItemGroup>
       <Folder Include="IAM\Domain\Model\Queries\" />
-      <Folder Include="IAM\Interfaces\" />
       <Folder Include="Profiles\Application\" />
       <Folder Include="Profiles\Infrastructure\" />
       <Folder Include="Profiles\Interfaces\" />
