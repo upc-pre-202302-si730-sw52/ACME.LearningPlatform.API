@@ -5,6 +5,7 @@ using ACME.LearningPlatform.API.IAM.Domain.Repositories;
 using ACME.LearningPlatform.API.IAM.Domain.Services;
 using ACME.LearningPlatform.API.IAM.Infrastructure.Hashing.BCrypt.Services;
 using ACME.LearningPlatform.API.IAM.Infrastructure.Persistence.Repositories;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Pipeline.Middleware.Extensions;
 using ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.JWT.Configuration;
 using ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.JWT.Services;
 using ACME.LearningPlatform.API.Publishing.Application.Internal.CommandServices;
@@ -47,6 +48,33 @@ builder.Services.AddSwaggerGen(
                 }
             });
         c.EnableAnnotations();
+
+        // Add Bearer Token Authentication Security Definition
+        c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            In = ParameterLocation.Header,
+            Description = "Please enter token",
+            Name = "Authorization",
+            Type = SecuritySchemeType.Http,
+            BearerFormat = "JWT",
+            Scheme = "bearer"
+        });
+        
+        // Add Bearer Token Authentication Requirement
+        c.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Id = "Bearer",
+                        Type = ReferenceType.SecurityScheme
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
     });
 
 // Add Database Connection
@@ -111,6 +139,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+// Add RequestAuthorization Middleware to ASP.NET Core Pipeline
+
+app.UseRequestAuthorization();
 
 app.UseHttpsRedirection();
 
