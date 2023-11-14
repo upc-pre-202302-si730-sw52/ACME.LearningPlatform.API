@@ -1,7 +1,8 @@
 using ACME.LearningPlatform.API.IAM.Application.Internal.OutboundServices;
 using ACME.LearningPlatform.API.IAM.Domain.Model.Queries;
 using ACME.LearningPlatform.API.IAM.Domain.Services;
-using Microsoft.AspNetCore.Authorization;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Pipeline.Middleware.Attributes;
+
 
 namespace ACME.LearningPlatform.API.IAM.Infrastructure.Pipeline.Middleware.Components;
 

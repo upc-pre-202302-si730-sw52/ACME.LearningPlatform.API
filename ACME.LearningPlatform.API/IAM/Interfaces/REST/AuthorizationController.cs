@@ -1,11 +1,13 @@
 using System.Net.Mime;
 using ACME.LearningPlatform.API.IAM.Domain.Services;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Pipeline.Middleware.Attributes;
 using ACME.LearningPlatform.API.IAM.Interfaces.REST.Resources;
 using ACME.LearningPlatform.API.IAM.Interfaces.REST.Transform;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ACME.LearningPlatform.API.IAM.Interfaces;
+namespace ACME.LearningPlatform.API.IAM.Interfaces.REST;
 
+[Authorize]
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
@@ -26,7 +28,9 @@ public class AuthorizationController : ControllerBase
  * <param name="signUpResource">The sign up resource containing the username and password.</param>
  * <returns>A confirmation message if successful.</returns>
  */
+    
     [HttpPost("sign-up")]
+    [AllowAnonymous]
     public async Task<IActionResult> SignUp([FromBody] SignUpResource signUpResource)
     {
         var signUpCommand = SignUpCommandFromResourceAssembler.ToCommandFromResource(signUpResource);
@@ -42,6 +46,7 @@ public class AuthorizationController : ControllerBase
      * <param name="signInResource">The sign in resource containing the username and password.</param>
      * <returns>The authenticated user including a JWT token.</returns>
      */
+    [AllowAnonymous]
     [HttpPost("sign-in")]
     public async Task<IActionResult> SignIn([FromBody] SignInResource signInResource)
     {

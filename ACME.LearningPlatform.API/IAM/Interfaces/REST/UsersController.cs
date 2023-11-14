@@ -1,7 +1,7 @@
 using System.Net.Mime;
 using ACME.LearningPlatform.API.IAM.Domain.Model.Queries;
 using ACME.LearningPlatform.API.IAM.Domain.Services;
-using ACME.LearningPlatform.API.IAM.Interfaces.REST.Resources;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Pipeline.Middleware.Attributes;
 using ACME.LearningPlatform.API.IAM.Interfaces.REST.Transform;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +13,7 @@ namespace ACME.LearningPlatform.API.IAM.Interfaces.REST;
  *     This controller is responsible for handling the requests related to the user.
  * </summary>
  */
+[Authorize]
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
