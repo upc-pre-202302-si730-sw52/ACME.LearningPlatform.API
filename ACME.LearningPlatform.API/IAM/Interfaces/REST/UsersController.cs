@@ -1,4 +1,5 @@
 using System.Net.Mime;
+using ACME.LearningPlatform.API.IAM.Domain.Model.Queries;
 using ACME.LearningPlatform.API.IAM.Domain.Services;
 using ACME.LearningPlatform.API.IAM.Interfaces.REST.Resources;
 using ACME.LearningPlatform.API.IAM.Interfaces.REST.Transform;
@@ -17,45 +18,30 @@ namespace ACME.LearningPlatform.API.IAM.Interfaces.REST;
 [Produces(MediaTypeNames.Application.Json)]
 public class UsersController : ControllerBase
 {
-    private readonly IUserCommandService _userCommandService;
+    private readonly IUserQueryService _userQueryService;
 
-    public UsersController(IUserCommandService userCommandService)
+    public UsersController(IUserQueryService userQueryService)
     {
-        _userCommandService = userCommandService;
+        _userQueryService = userQueryService;
     }
 
-    /**
-     * Sign up.
-     * <summary>
-     *     This endpoint is responsible for creating a new user.
-     * </summary>
-     * <param name="signUpResource">The sign up resource containing the username and password.</param>
-     * <returns>A confirmation message if successful.</returns>
-     */
-    [HttpPost("sign-up")]
-    public async Task<IActionResult> SignUp([FromBody] SignUpResource signUpResource)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUserById(int id)
     {
-        var signUpCommand = SignUpCommandFromResourceAssembler.ToCommandFromResource(signUpResource);
-        await _userCommandService.Handle(signUpCommand);
-        return Ok("User created successfully");
+        var getUserByIdQuery = new GetUserByIdQuery(id);
+        var user = await _userQueryService.Handle(getUserByIdQuery);
+        var userResource = UserResourceFromEntityAssembler.ToResourceFromEntity(user!);
+        return Ok(userResource);
     }
 
-    /**
-     * Sign in.
-     * <summary>
-     *     This endpoint is responsible for authenticating a user.
-     * </summary>
-     * <param name="signInResource">The sign in resource containing the username and password.</param>
-     * <returns>The authenticated user including a JWT token.</returns>
-     */
-    [HttpPost("sign-in")]
-    public async Task<IActionResult> SignIn([FromBody] SignInResource signInResource)
+    [HttpGet]
+    public async Task<IActionResult> GetAllUsers()
     {
-        var signInCommand = SignInCommandFromResourceAssembler.ToCommandFromResource(signInResource);
-        var authenticatedUser = await _userCommandService.Handle(signInCommand);
-        var resource =
-            AuthenticatedUserResourceFromEntityAssembler.ToResourceFromEntity(authenticatedUser.user,
-                authenticatedUser.token);
-        return Ok(resource);
+        var getAllUsersQuery = new GetAllUsersQuery();
+        var users = await _userQueryService.Handle(getAllUsersQuery);
+        var userResources = users
+            .Select(UserResourceFromEntityAssembler.ToResourceFromEntity);
+        return Ok(userResources);
     }
+
 }
