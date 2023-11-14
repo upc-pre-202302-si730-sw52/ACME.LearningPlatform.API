@@ -123,6 +123,15 @@ builder.Services.AddScoped<IUserQueryService, UserQueryService>();
 // TokenSettings Configuration
 builder.Services.Configure<TokenSettings>(builder.Configuration.GetSection("TokenSettings"));
 
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllPolicy",
+        policy => policy.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+    
 var app = builder.Build();
 
 // Validate Database Objects are created
@@ -139,6 +148,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+
+// Add CORS Middleware to ASP.NET Core Pipeline
+
+app.UseCors("AllowAllPolicy");
 
 // Add RequestAuthorization Middleware to ASP.NET Core Pipeline
 
