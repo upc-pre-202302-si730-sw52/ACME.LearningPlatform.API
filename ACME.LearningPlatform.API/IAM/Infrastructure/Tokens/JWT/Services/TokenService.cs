@@ -3,11 +3,11 @@ using System.Security.Claims;
 using System.Text;
 using ACME.LearningPlatform.API.IAM.Application.Internal.OutboundServices;
 using ACME.LearningPlatform.API.IAM.Domain.Model.Aggregates;
-using ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.Configuration;
+using ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.JWT.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.Services;
+namespace ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.JWT.Services;
 
 /**
  * <summary>
