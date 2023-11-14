@@ -26,6 +26,7 @@ public class RequestAuthorizationMiddleware
 
         if (allowAnonymous)
         {
+            Console.WriteLine("Skipping authorization");
             await _next(context);
             return;
         }

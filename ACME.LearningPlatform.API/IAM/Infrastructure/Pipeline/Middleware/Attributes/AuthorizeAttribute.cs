@@ -14,6 +14,7 @@ public class AuthorizeAttribute : Attribute, IAuthorizationFilter
         if (allowAnonymous)
         {
             Console.WriteLine("Skipping authorization");
+            return;
         }
         
         var user = (User?)context.HttpContext.Items["User"];
