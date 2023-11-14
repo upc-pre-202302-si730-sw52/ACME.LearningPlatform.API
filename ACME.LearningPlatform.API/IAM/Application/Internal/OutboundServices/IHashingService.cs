@@ -3,7 +3,7 @@ namespace ACME.LearningPlatform.API.IAM.Application.Internal.OutboundServices;
 /**
  * Hashing service.
  * <summary>
- * This interface is used to hash passwords and verify them.
+ *     This interface is used to hash passwords and verify them.
  * </summary>
  */
 public interface IHashingService
@@ -14,7 +14,7 @@ public interface IHashingService
      * <returns>The hashed password</returns>
      */
     string HashPassword(string password);
-    
+
     /**
      * Verifies a password.
      * <param name="password">The original password</param>

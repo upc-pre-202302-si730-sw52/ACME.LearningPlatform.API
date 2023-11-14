@@ -13,16 +13,16 @@ public interface IUserCommandService
     /**
      * This method is used to handle the SignUpCommand.
      * The SignUpCommand is used to create a new User.
-     * 
+     *
      * @param command The SignUpCommand that is sent to the UserCommandService.
      * @return A Task that represents the asynchronous operation.
      */
     Task Handle(SignUpCommand command);
-    
+
     /**
      * This method is used to handle the SignInCommand.
      * The SignInCommand is used to sign in a User.
-     * 
+     *
      * @param command The SignInCommand that is sent to the UserCommandService.
      * @return A Task that represents the asynchronous operation.
      */

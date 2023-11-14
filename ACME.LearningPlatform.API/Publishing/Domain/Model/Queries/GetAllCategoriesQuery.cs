@@ -1,3 +1,3 @@
 namespace ACME.LearningPlatform.API.Publishing.Domain.Model.Queries;
 
-public record GetAllCategoriesQuery();
+public record GetAllCategoriesQuery;

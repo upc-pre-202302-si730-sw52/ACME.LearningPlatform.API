@@ -22,7 +22,7 @@ public class CategoryTutorialsController : ControllerBase
     /**
      * Get Tutorials by Category Id.
      * <summary>
-     * Get Tutorials for a given category.
+     *     Get Tutorials for a given category.
      * </summary>
      * <param name="categoryId">Category Id</param>
      * <returns>Tutorial Resources</returns>
@@ -35,5 +35,4 @@ public class CategoryTutorialsController : ControllerBase
         var resources = tutorials.Select(TutorialResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(resources);
     }
-        
 }

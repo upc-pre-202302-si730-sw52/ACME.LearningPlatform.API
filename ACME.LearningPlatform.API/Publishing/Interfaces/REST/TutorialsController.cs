@@ -13,7 +13,8 @@ public class TutorialsController : ControllerBase
     private readonly ITutorialCommandService _tutorialCommandService;
     private readonly ITutorialQueryService _tutorialQueryService;
 
-    public TutorialsController(ITutorialCommandService tutorialCommandService, ITutorialQueryService tutorialQueryService)
+    public TutorialsController(ITutorialCommandService tutorialCommandService,
+        ITutorialQueryService tutorialQueryService)
     {
         _tutorialCommandService = tutorialCommandService;
         _tutorialQueryService = tutorialQueryService;
@@ -28,7 +29,7 @@ public class TutorialsController : ControllerBase
         var resource = TutorialResourceFromEntityAssembler.ToResourceFromEntity(tutorial);
         return CreatedAtAction(nameof(GetTutorialByIdentifier), new { tutorialIdentifier = resource.Id }, resource);
     }
-    
+
     [HttpGet]
     public async Task<IActionResult> GetAllTutorials()
     {
@@ -37,7 +38,7 @@ public class TutorialsController : ControllerBase
         var resources = tutorials.Select(TutorialResourceFromEntityAssembler.ToResourceFromEntity);
         return Ok(resources);
     }
-    
+
     [HttpGet("{tutorialIdentifier}")]
     public async Task<IActionResult> GetTutorialByIdentifier([FromRoute] int tutorialIdentifier)
     {

@@ -5,7 +5,7 @@ using ACME.LearningPlatform.API.Publishing.Domain.Services;
 
 namespace ACME.LearningPlatform.API.Publishing.Application.Internal.QueryServices;
 
-public class TutorialQueryService: ITutorialQueryService
+public class TutorialQueryService : ITutorialQueryService
 {
     private readonly ITutorialRepository _tutorialRepository;
 

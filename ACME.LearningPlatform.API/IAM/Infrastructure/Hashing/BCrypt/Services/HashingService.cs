@@ -6,7 +6,7 @@ namespace ACME.LearningPlatform.API.IAM.Infrastructure.Hashing.BCrypt.Services;
 /**
  * Hashing service.
  * <summary>
- * This class is used to hash passwords and verify them.
+ *     This class is used to hash passwords and verify them.
  * </summary>
  */
 public class HashingService : IHashingService

@@ -100,10 +100,10 @@ var app = builder.Build();
 // Validate Database Objects are created
 
 using (var scope = app.Services.CreateScope())
-    using (var context = scope.ServiceProvider.GetService<AppDbContext>())
-    {
-        context?.Database.EnsureCreated();
-    }
+using (var context = scope.ServiceProvider.GetService<AppDbContext>())
+{
+    context?.Database.EnsureCreated();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

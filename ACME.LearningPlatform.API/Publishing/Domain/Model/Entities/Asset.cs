@@ -11,17 +11,12 @@ public partial class Asset : IPublishable
         AssetIdentifier = new AcmeAssetIdentifier();
     }
 
-    public int Id { get; private set; }
+    public int Id { get; }
     public AcmeAssetIdentifier AssetIdentifier { get; private set; }
-    
-    public EPublishingStatus Status {get; protected set;}
-    
-    public EAssetType Type {get; private set;}
 
-    public virtual object GetContent()
-    {
-        return string.Empty;
-    }
+    public EPublishingStatus Status { get; protected set; }
+
+    public EAssetType Type { get; private set; }
 
     public virtual bool Readable => false;
 
@@ -31,7 +26,7 @@ public partial class Asset : IPublishable
     {
         Status = EPublishingStatus.ReadyToEdit;
     }
-    
+
     public void SendToApproval()
     {
         Status = EPublishingStatus.ReadyToApproval;
@@ -46,9 +41,14 @@ public partial class Asset : IPublishable
     {
         Status = EPublishingStatus.ApprovedAndLocked;
     }
-    
+
     public void ReturnToEdit()
     {
         Status = EPublishingStatus.ReadyToEdit;
+    }
+
+    public virtual object GetContent()
+    {
+        return string.Empty;
     }
 }

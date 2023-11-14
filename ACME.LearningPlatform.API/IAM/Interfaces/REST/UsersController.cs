@@ -39,7 +39,7 @@ public class UsersController : ControllerBase
         await _userCommandService.Handle(signUpCommand);
         return Ok("User created successfully");
     }
-    
+
     /**
      * Sign in.
      * <summary>
@@ -48,7 +48,6 @@ public class UsersController : ControllerBase
      * <param name="signInResource">The sign in resource containing the username and password.</param>
      * <returns>The authenticated user including a JWT token.</returns>
      */
-
     [HttpPost("sign-in")]
     public async Task<IActionResult> SignIn([FromBody] SignInResource signInResource)
     {

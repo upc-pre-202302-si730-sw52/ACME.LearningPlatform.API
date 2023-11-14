@@ -6,7 +6,7 @@ using ACME.LearningPlatform.API.Shared.Domain.Repositories;
 
 namespace ACME.LearningPlatform.API.Publishing.Application.Internal.CommandServices;
 
-public class CategoryCommandService: ICategoryCommandService
+public class CategoryCommandService : ICategoryCommandService
 {
     private readonly ICategoryRepository _categoryRepository;
     private readonly IUnitOfWork _unitOfWork;

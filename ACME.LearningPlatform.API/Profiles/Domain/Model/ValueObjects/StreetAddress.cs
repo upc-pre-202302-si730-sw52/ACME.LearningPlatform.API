@@ -5,18 +5,21 @@ public record StreetAddress(string Street, string Number, string City, string St
     public StreetAddress() : this(string.Empty, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty)
     {
     }
-    
-    public StreetAddress(string street) : this(street, string.Empty, string.Empty, string.Empty, string.Empty, string.Empty)
+
+    public StreetAddress(string street) : this(street, string.Empty, string.Empty, string.Empty, string.Empty,
+        string.Empty)
     {
     }
-    
-    public StreetAddress(string street, string number) : this(street, number, string.Empty, string.Empty, string.Empty, string.Empty)
+
+    public StreetAddress(string street, string number) : this(street, number, string.Empty, string.Empty, string.Empty,
+        string.Empty)
     {
     }
-    
-    public StreetAddress(string street, string city, string state) : this(street,string.Empty,  city, state, string.Empty, string.Empty)
+
+    public StreetAddress(string street, string city, string state) : this(street, string.Empty, city, state,
+        string.Empty, string.Empty)
     {
     }
-    
-    public string FullAddress => $"{Street}, {Number }{City}, {State}, {ZipCode} {Country}";
+
+    public string FullAddress => $"{Street}, {Number}{City}, {State}, {ZipCode} {Country}";
 }

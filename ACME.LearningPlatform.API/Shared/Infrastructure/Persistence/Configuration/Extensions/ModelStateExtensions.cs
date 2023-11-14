@@ -10,5 +10,4 @@ public static class ModelStateExtensions
             .Select(m => m.ErrorMessage)
             .ToList();
     }
-    
 }

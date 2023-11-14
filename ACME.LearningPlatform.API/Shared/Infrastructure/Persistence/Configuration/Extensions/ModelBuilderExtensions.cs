@@ -12,9 +12,7 @@ public static class ModelBuilderExtensions
             if (!string.IsNullOrEmpty(tableName)) entity.SetTableName(tableName.ToSnakeCase());
 
             foreach (var property in entity.GetProperties())
-            {
-                property.SetColumnName(property.GetColumnName().ToSnakeCase());    
-            }
+                property.SetColumnName(property.GetColumnName().ToSnakeCase());
 
             foreach (var key in entity.GetKeys())
             {
@@ -25,7 +23,8 @@ public static class ModelBuilderExtensions
             foreach (var foreignKey in entity.GetForeignKeys())
             {
                 var foreignKeyConstraintName = foreignKey.GetConstraintName();
-                if (!string.IsNullOrEmpty(foreignKeyConstraintName)) foreignKey.SetConstraintName(foreignKeyConstraintName.ToSnakeCase());
+                if (!string.IsNullOrEmpty(foreignKeyConstraintName))
+                    foreignKey.SetConstraintName(foreignKeyConstraintName.ToSnakeCase());
             }
 
             foreach (var index in entity.GetIndexes())

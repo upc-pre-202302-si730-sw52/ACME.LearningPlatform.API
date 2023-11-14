@@ -11,8 +11,7 @@ namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configurat
 /**
  * <summary>
  *     Application Database Context
- *
- *     This class is responsible for configuring the database context for the application. 
+ *     This class is responsible for configuring the database context for the application.
  * </summary>
  */
 public class AppDbContext : DbContext
@@ -26,22 +25,22 @@ public class AppDbContext : DbContext
     {
         // Enable Created/Updated Interceptors
         builder.AddCreatedUpdatedInterceptor();
-        
+
         base.OnConfiguring(builder);
     }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        
+
         // Publishing Context
-        
+
         // Category Entity Configuration
         builder.Entity<Category>().ToTable("Categories");
         builder.Entity<Category>().HasKey(c => c.Id);
         builder.Entity<Category>().Property(c => c.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<Category>().Property(c => c.Name).IsRequired().HasMaxLength(30);
-        
+
         // Tutorial Entity Configuration
         builder.Entity<Tutorial>().ToTable("Tutorials");
         builder.Entity<Tutorial>().HasKey(t => t.Id);
@@ -54,7 +53,7 @@ public class AppDbContext : DbContext
             .HasMany(c => c.Tutorials)
             .WithOne(t => t.Category)
             .HasForeignKey(t => t.CategoryId);
-        
+
         // Asset Entity Configuration
         builder.Entity<Asset>().ToTable("Assets")
             .HasDiscriminator(a => a.Type);
@@ -75,7 +74,7 @@ public class AppDbContext : DbContext
         builder.Entity<VideoAsset>().Property(p => p.VideoUri).IsRequired();
 
         builder.Entity<Tutorial>().HasMany(t => t.Assets);
-        
+
         // Profiles Context
 
         builder.Entity<Profile>().ToTable("Profiles");
@@ -88,7 +87,7 @@ public class AppDbContext : DbContext
                 n.Property(p => p.FirstName).HasColumnName("FirstName");
                 n.Property(p => p.LastName).HasColumnName("LastName");
             });
-        
+
         builder.Entity<Profile>().OwnsOne(p => p.Email,
             e =>
             {
@@ -107,19 +106,17 @@ public class AppDbContext : DbContext
                 a.Property(p => p.ZipCode).HasColumnName("AddressZipCode");
                 a.Property(p => p.Country).HasColumnName("AddressCountry");
             });
-        
+
         // IAM Context
-        
+
         builder.Entity<User>().ToTable("Users");
         builder.Entity<User>().HasKey(u => u.Id);
         builder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<User>().Property(u => u.Username).IsRequired().HasMaxLength(30);
         builder.Entity<User>().Property(u => u.PasswordHash).IsRequired().HasMaxLength(30);
-        
-        
+
+
         // Apply snake case naming convention
         builder.UseSnakeCaseNamingConvention();
-        
-        
     }
 }

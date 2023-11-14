@@ -2,12 +2,10 @@ namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Configurat
 
 public static class StringExtensions
 {
-    
     public static string ToSnakeCase(this string text)
     {
-
         return new string(Convert(text.GetEnumerator()).ToArray());
-        
+
         static IEnumerable<char> Convert(CharEnumerator e)
         {
             if (!e.MoveNext()) yield break;
@@ -15,7 +13,6 @@ public static class StringExtensions
             yield return char.ToLower(e.Current);
 
             while (e.MoveNext())
-            {
                 if (char.IsUpper(e.Current))
                 {
                     yield return '_';
@@ -25,7 +22,6 @@ public static class StringExtensions
                 {
                     yield return e.Current;
                 }
-            }
         }
     }
 }

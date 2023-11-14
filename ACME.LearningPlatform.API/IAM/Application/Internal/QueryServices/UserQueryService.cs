@@ -4,5 +4,4 @@ namespace ACME.LearningPlatform.API.IAM.Application.Internal.QueryServices;
 
 public class UserQueryService : IUserQueryService
 {
-    
 }

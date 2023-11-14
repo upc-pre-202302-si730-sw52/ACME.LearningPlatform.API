@@ -5,7 +5,7 @@ using ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Repositories;
 
 namespace ACME.LearningPlatform.API.Publishing.Infrastructure.Persistence.Repositories;
 
-public class CategoryRepository: BaseRepository<Category>, ICategoryRepository
+public class CategoryRepository : BaseRepository<Category>, ICategoryRepository
 {
     public CategoryRepository(AppDbContext context) : base(context)
     {

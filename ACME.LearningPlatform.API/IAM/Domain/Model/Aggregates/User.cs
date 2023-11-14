@@ -24,11 +24,11 @@ public class User
         PasswordHash = string.Empty;
     }
 
-    public int Id { get; private set; }
+    public int Id { get; }
     public string Username { get; private set; }
-    [JsonIgnore]
-    public string PasswordHash { get; private set; }
-    
+
+    [JsonIgnore] public string PasswordHash { get; private set; }
+
     /**
      * <summary>
      *     Updates the username of the user.
@@ -41,7 +41,7 @@ public class User
         Username = username;
         return this;
     }
-    
+
     /**
      * <summary>
      *     Updates the password hash of the user.

@@ -6,7 +6,7 @@ using ACME.LearningPlatform.API.Shared.Domain.Repositories;
 
 namespace ACME.LearningPlatform.API.Publishing.Application.Internal.CommandServices;
 
-public class TutorialCommandService: ITutorialCommandService
+public class TutorialCommandService : ITutorialCommandService
 {
     private readonly ITutorialRepository _tutorialRepository;
     private readonly IUnitOfWork _unitOfWork;
@@ -20,15 +20,12 @@ public class TutorialCommandService: ITutorialCommandService
     public async Task<Tutorial> Handle(AddVideoAssetToTutorialCommand command)
     {
         var tutorial = await _tutorialRepository.FindByIdAsync(command.TutorialId);
-        if (tutorial is null)
-        {
-            throw new Exception("Tutorial not found");
-        }
+        if (tutorial is null) throw new Exception("Tutorial not found");
         tutorial.AddVideo(command.VideoUrl);
         await _unitOfWork.CompleteAsync();
         return tutorial;
     }
-    
+
     public async Task<Tutorial> Handle(CreateTutorialCommand command)
     {
         var tutorial = new Tutorial(command.Title, command.Summary, command.CategoryId);

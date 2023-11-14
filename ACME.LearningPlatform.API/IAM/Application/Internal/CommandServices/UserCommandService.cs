@@ -10,19 +10,20 @@ namespace ACME.LearningPlatform.API.IAM.Application.Internal.CommandServices;
 /**
  * User Command Service.
  * <summary>
- *   <para>
- *     This class is responsible for handling the commands related to the User aggregate.
- *   </para>
+ *     <para>
+ *         This class is responsible for handling the commands related to the User aggregate.
+ *     </para>
  * </summary>
  */
 public class UserCommandService : IUserCommandService
 {
-    private readonly IUserRepository _userRepository;
-    private readonly ITokenService _tokenService;
     private readonly IHashingService _hashingService;
+    private readonly ITokenService _tokenService;
     private readonly IUnitOfWork _unitOfWork;
+    private readonly IUserRepository _userRepository;
 
-    public UserCommandService(IUserRepository userRepository, ITokenService tokenService, IHashingService hashingService, IUnitOfWork unitOfWork)
+    public UserCommandService(IUserRepository userRepository, ITokenService tokenService,
+        IHashingService hashingService, IUnitOfWork unitOfWork)
     {
         _userRepository = userRepository;
         _tokenService = tokenService;
@@ -33,9 +34,9 @@ public class UserCommandService : IUserCommandService
     /**
      * Handle the SignUpCommand.
      * <summary>
-     *   <para>
-     *     This method is responsible for handling the SignUpCommand.
-     *   </para>
+     *     <para>
+     *         This method is responsible for handling the SignUpCommand.
+     *     </para>
      * </summary>
      * <param name="command">The SignUpCommand to be handled, including username and password.</param>
      * <returns>A Task if successful, otherwise throws and exception.</returns>
@@ -56,15 +57,14 @@ public class UserCommandService : IUserCommandService
         {
             throw new Exception($"Error while creating user: {e.Message}");
         }
-
     }
 
     /**
      * Handle the SignInCommand.
      * <summary>
-     *   <para>
-     *     This method is responsible for handling the SignInCommand.
-     *   </para>
+     *     <para>
+     *         This method is responsible for handling the SignInCommand.
+     *     </para>
      * </summary>
      * <param name="command">The SignInCommand to be handled, including username and password.</param>
      * <returns>A tuple containing the User and the generated token if successful, otherwise throws and exception.</returns>

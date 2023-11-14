@@ -7,7 +7,7 @@ public record ContentItem
         Type = type;
         Content = content;
     }
-    
+
     public string Type { get; set; }
     public string Content { get; set; }
 }

@@ -5,9 +5,8 @@ namespace ACME.LearningPlatform.API.Shared.Infrastructure.Persistence.Repositori
 
 public class UnitOfWork : IUnitOfWork
 {
-
     private readonly AppDbContext _context;
-    
+
     public UnitOfWork(AppDbContext context)
     {
         _context = context;

@@ -11,7 +11,7 @@ namespace ACME.LearningPlatform.API.IAM.Infrastructure.Tokens.JWT.Services;
 
 /**
  * <summary>
- *  This class is responsible for generating and validating tokens.
+ *     This class is responsible for generating and validating tokens.
  * </summary>
  */
 public class TokenService : ITokenService
@@ -25,7 +25,7 @@ public class TokenService : ITokenService
 
     /**
      * <summary>
-     *  This method generates a token for a given user.
+     *     This method generates a token for a given user.
      * </summary>
      * <param name="user">The user to generate the token for.</param>
      * <returns>The generated token.</returns>
@@ -39,31 +39,30 @@ public class TokenService : ITokenService
             Subject = new ClaimsIdentity(new[]
             {
                 new Claim(ClaimTypes.Sid, user.Id.ToString()),
-                new Claim(ClaimTypes.Name, user.Username),
+                new Claim(ClaimTypes.Name, user.Username)
             }),
             Expires = DateTime.UtcNow.AddDays(7),
-            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            SigningCredentials =
+                new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var tokenHandler = new JwtSecurityTokenHandler();
-        
+
         var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
-
     }
 
     /**
      * <summary>
-     *  This method validates a token.
+     *     This method validates a token.
      * </summary>
      * <param name="token">The token to validate.</param>
      * <returns>The user id if the token is valid, null otherwise.</returns>
      */
     public int? ValidateToken(string token)
     {
-
         if (string.IsNullOrEmpty(token))
             return null;
-        
+
         var tokenHandler = new JwtSecurityTokenHandler();
         var key = Encoding.ASCII.GetBytes(_tokenSettings.Secret);
 
