@@ -11,11 +11,11 @@ namespace ACME.LearningPlatform.API.IAM.Interfaces.REST;
 [ApiController]
 [Route("api/v1/[controller]")]
 [Produces(MediaTypeNames.Application.Json)]
-public class AuthorizationController : ControllerBase
+public class AuthenticationController : ControllerBase
 {
     private readonly IUserCommandService _userCommandService;
 
-    public AuthorizationController(IUserCommandService userCommandService)
+    public AuthenticationController(IUserCommandService userCommandService)
     {
         _userCommandService = userCommandService;
     }
