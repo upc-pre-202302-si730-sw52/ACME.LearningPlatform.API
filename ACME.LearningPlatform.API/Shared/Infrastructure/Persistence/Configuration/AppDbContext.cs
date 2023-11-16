@@ -113,7 +113,7 @@ public class AppDbContext : DbContext
         builder.Entity<User>().HasKey(u => u.Id);
         builder.Entity<User>().Property(u => u.Id).IsRequired().ValueGeneratedOnAdd();
         builder.Entity<User>().Property(u => u.Username).IsRequired().HasMaxLength(30);
-        builder.Entity<User>().Property(u => u.PasswordHash).IsRequired().HasMaxLength(30);
+        builder.Entity<User>().Property(u => u.PasswordHash).IsRequired();
 
 
         // Apply snake case naming convention
